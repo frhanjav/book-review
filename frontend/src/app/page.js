@@ -23,7 +23,7 @@ export default function HomePage() {
         setPage(data.page);
         setPages(data.pages);
         setLoading(false);
-      } catch (err) {
+      } catch {
         setError("Failed to fetch books.");
         setLoading(false);
       }

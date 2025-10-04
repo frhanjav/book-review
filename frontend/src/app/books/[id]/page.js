@@ -18,21 +18,21 @@ export default function BookDetailsPage() {
   const router = useRouter();
   const { id } = params;
 
-  const fetchBook = async () => {
-    try {
-      setLoading(true);
-      const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/books/${id}`
-      );
-      setBook(data);
-      setLoading(false);
-    } catch (err) {
-      setError("Failed to fetch book details.");
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchBook = async () => {
+      try {
+        setLoading(true);
+        const { data } = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/books/${id}`
+        );
+        setBook(data);
+        setLoading(false);
+      } catch {
+        setError("Failed to fetch book details.");
+        setLoading(false);
+      }
+    };
+
     if (id) {
       fetchBook();
     }
@@ -54,8 +54,11 @@ export default function BookDetailsPage() {
       );
       setRating(0);
       setReviewText("");
-      fetchBook(); // Refresh reviews
-    } catch (err) {
+      const { data } = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/books/${id}`
+      );
+      setBook(data);
+    } catch {
       setError("Failed to submit review. Make sure you are logged in.");
     }
   };
@@ -65,7 +68,7 @@ export default function BookDetailsPage() {
       try {
         await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/books/${id}`);
         router.push("/");
-      } catch (err) {
+      } catch {
         setError("Failed to delete book. You may not be the owner.");
       }
     }

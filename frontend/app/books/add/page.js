@@ -3,9 +3,9 @@
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import BookForm from "../../../components/BookForm";
-import Spinner from "../../../components/Spinner";
-import { useAuth } from "../../context/AuthContext";
+import BookForm from "@/components/BookForm";
+import Spinner from "@/components/Spinner";
+import { useAuth } from "@/app/context/AuthContext";
 
 export default function AddBookPage() {
   const router = useRouter();

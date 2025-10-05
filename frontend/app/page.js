@@ -3,7 +3,7 @@
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import Spinner from "../components/Spinner";
+import Spinner from "@/components/Spinner";
 
 export default function HomePage() {
   const [books, setBooks] = useState([]);

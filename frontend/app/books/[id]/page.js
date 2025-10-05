@@ -4,8 +4,8 @@ import axios from "axios";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import Spinner from "../../../components/Spinner";
-import { useAuth } from "../../context/AuthContext";
+import Spinner from "@/components/Spinner";
+import { useAuth } from "@/app/context/AuthContext";
 
 export default function BookDetailsPage() {
   const [book, setBook] = useState(null);
